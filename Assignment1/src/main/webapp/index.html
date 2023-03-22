@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="style.scss">
+</head>
+<body>
+<main id="main" class="container">
+	<div class="row">
+		<div class="col-xs-12 col-lg-offset-3 col-lg-6">
+			<div class="m-b-md text-center">
+				<h1 id="title">Student Survey Form</h1>
+				<p id="description" class="description" class="text-center">Let us know what you think about Mason!</p>
+			</div>
+			<form method="GET" action="" id="survey-form" name="survey-form">
+				<fieldset>
+					<label for="fname" id="fname-label">
+						First Name *
+						<input class="" type="text" id="fname" name="fname" placeholder="Enter your first name (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="lname" id="lname-label">
+						Last Name *
+						<input class="" type="text" id="lname" name="lname" placeholder="Enter your last name (required)" required />
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label for="email" id="email-label">
+						Email *
+						<input class="" type="email" id="email" name="email" placeholder="Enter your email (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="phone" id="phone-label">
+						Phone *
+						<input class="" type="number" id="phone" name="phone" placeholder="Enter your phone number (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="addr" id="addr-label">
+						Street Address *
+						<input class="" type="text" id="addr" name="addr" placeholder="Enter your address (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="city" id="city-label">
+						City *
+						<input class="" type="text" id="city" name="city" placeholder="Enter your city (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="state" id="state-label">
+						State *
+						<input class="" type="text" id="state" name="state" placeholder="Enter your state (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="zip" id="zip-label">
+						Zip Code *
+						<input class="" type="zip" id="zip" name="zip" placeholder="Enter your zip (required)" required />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="enter-date" id="enter-date-label">
+						Date *
+						<input class="" type="date" required />
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<div class="labels">
+						What do you like most about the campus?
+					</div>
+					<label for="survey-form-improve1" class="m-b-xs">
+						<input type="checkbox" id="survey-form-improve1" value="students">
+						Students
+					</label>
+					<label for="survey-form-improve2" class="m-b-xs">
+						<input type="checkbox" id="survey-form-improve2" value="location">
+						Location
+					</label>
+					<label for="survey-form-improve3" class="m-b-xs">
+						<input type="checkbox" id="survey-form-improve3" value="atmosphere">
+						Atmosphere
+					</label>
+					<label for="survey-form-improve4" class="m-b-xs">
+						<input type="checkbox" id="survey-form-improve4" value="dormrooms">
+						Dorm Rooms
+					</label>
+					<label for="survey-form-improve5" class="m-b-xs">
+						<input type="checkbox" id="survey-form-improve5" value="sports">
+						Sports
+					</label>
+
+				</fieldset>
+				<fieldset>
+					<div class="labels">
+						How did you become interested in Mason? *
+					</div>
+					<label class="m-b-xs">
+						<input type="radio" name="survey-form-gender" value="definitely" checked /> Friends
+					</label>
+					<label class="m-b-xs">
+						<input type="radio" name="survey-form-gender" value="maybe" /> Television
+					</label>
+					<label class="m-b-xs">
+						<input type="radio" name="survey-form-gender" value="notSure" /> Internet
+					</label>
+					<label class="m-b-xs">
+						<input type="radio" name="survey-form-gender" value="notSure" /> Other
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="survey-form-like">
+						How likely will you recommend Mason to other prospective students:
+						<select id="survey-form-like" name="survey-form-like" class="m-t-xs">
+
+							<option value="verylikely">Very likely</option>
+							<option value="likely">Likely</option>
+							<option value="unlikely">Unlikely</option>
+						</select>
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label for="email" id="email-label">
+						Please enter at least 10 numbers from 1 through 100 to participate the raffle (numbers should be seperated by comma)
+						<input class="" type="raffle" id="raffle" name="raffle" placeholder="Enter your email (required)" />
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for="survey-form-suggestions">
+						Any Comments or Suggestions?
+						<textarea id="survey-form-suggestions" maxlength="194"></textarea>
+					</label>
+				</fieldset>
+				<button id="submit" type="submit" class="btn">Submit the form</button>
+				<button id="cancel" type="reset" class="btn">Cancel</button>
+			</form>
+			<div class="copyright m-t-sm">
+				<div>By Hsien Shen </div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>
