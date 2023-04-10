@@ -1,3 +1,3 @@
 FROM tomcat:8.5-jdk15
 
-COPY Assignment1.war /usr/local/tomcat/webapps/
+COPY src/main/webapp/Assignment.war /usr/local/tomcat/webapps/
