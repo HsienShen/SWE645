@@ -9,9 +9,10 @@ pipeline {
     		steps{
     			script{
 		    		checkout scm
+		    		sh 'ls'
 		    		sh 'cd src/main/webapp && jar -cvf Assignment.war *'
 		    		sh 'echo ${BUILD_TIMESTAMP}'
-		    		sh "docker login -u hshen2 -p ${DOCKERHUB_PASS}"
+		    		sh " docker login -u hshen2 -p ${DOCKERHUB_PASS}"
 		    		def customImage = docker.build("hshen2/studentsurvey645:${BUILD_TIMESTAMP}")
 		    	}
     		}
