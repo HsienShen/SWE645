@@ -10,7 +10,7 @@ pipeline {
     			script{
 		    		checkout scm
 		    		sh 'ls'
-		    		sh 'cd src/main/webapp && jar -cvf Assignment.war *'
+		    		sh 'cd Assigment1/src/main/webapp && jar -cvf Assignment.war *'
 		    		sh 'echo ${BUILD_TIMESTAMP}'
 		    		sh " docker login -u hshen2 -p ${DOCKERHUB_PASS}"
 		    		def customImage = docker.build("hshen2/studentsurvey645:${BUILD_TIMESTAMP}")
