@@ -1,3 +1,5 @@
+//Author: Hsien-Tien Shen & Naurmi Varma
+// This file contains the credentials and the neccessary commands to run jenkins pipeline
 pipeline {
     agent any
  
