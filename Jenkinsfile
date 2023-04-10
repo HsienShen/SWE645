@@ -27,6 +27,12 @@ pipeline {
                 }
             }
         }
+
+		stage("Deploy docker image to the kube cluster"){
+            steps{
+                sh("kubectl set image deployment/assignment2 container-0=hshen2/studentsurvey645:${BUILD_TIMESTAMP} -n default")
+            }
+        }
         
 
     }
