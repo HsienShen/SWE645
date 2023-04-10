@@ -4,24 +4,27 @@ pipeline {
 	environment { 
         DOCKERHUB_PASS = credentials{'820212Aaa!'}
     }
-    steps{
-    	script{
-    		checkout scm
-    		sh 'rm -rf *.war'
-    		sh 'jar -cvf Assignment1.war -C WebContent/ .'
-    		sh 'echo ${BUILD_TIMESTAMP}'
-    		sh "docker login -u hshen2 -p ${DOCKERHUB_PASS}"
-    		def customImage = docker.build("hshen2/studentsurvey645:${BUILD_TIMESTAMP}")
-    		
+    stages{
+    	stage("Building the student survey image"){
+    		steps{
+    			script{
+		    		checkout scm
+		    		sh 'rm -rf *.war'
+		    		sh 'jar -cvf Assignment1.war -C WebContent/ .'
+		    		sh 'echo ${BUILD_TIMESTAMP}'
+		    		sh "docker login -u hshen2 -p ${DOCKERHUB_PASS}"
+		    		def customImage = docker.build("hshen2/studentsurvey645:${BUILD_TIMESTAMP}")
+		    	}
+    		}
     	
     	
     	}
     
-    }
-    stages {
-        stage ('pushing image to dockerhub') {
+        stage ("pushing image to dockerhub") {
             steps {
-                sh 'docker push hshen2/studentsurvey645:${BUILD_TIMESTAMP}'
+            	script{
+                	sh 'docker push hshen2/studentsurvey645:${BUILD_TIMESTAMP}'
+                }
             }
         }
         
