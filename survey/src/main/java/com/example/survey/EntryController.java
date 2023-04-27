@@ -10,41 +10,62 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import org.springframework.hateoas.CollectionModel;
+import java.util.stream.Collectors;
+import org.springframework.http.ResponseEntity;
+import org.springframework.hateoas.IanaLinkRelations;
+
+
 @RestController
 public class EntryController {
 
-    private final EntryRepository repository;    
+    private final EntryRepository repository; 
+    private final EntryModelAssembler assembler;   
 
-    EntryController(EntryRepository repository) {
+    EntryController(EntryRepository repository, EntryModelAssembler assembler) {
         this.repository = repository;
+        this.assembler = assembler;
     }
 
     // Aggregate root
     // tag::get-aggregate-root[]
-    @GetMapping("/entries")
-    List<Entry> all() {
-        return repository.findAll();
+    CollectionModel<EntityModel<Entry>> all() {
+
+      List<EntityModel<Entry>> entries = repository.findAll().stream()
+          .map(assembler::toModel) //
+          .collect(Collectors.toList());
+    
+      return CollectionModel.of(entries, linkTo(methodOn(EntryController.class).all()).withSelfRel());
     }
     // end::get-aggregate-root[]
 
     @PostMapping("/entries")
-    Entry newEntry(@RequestBody Entry newEntry) {
-      return repository.save(newEntry);
+    ResponseEntity<?> newEntry(@RequestBody Entry newEntry) {
+
+      EntityModel<Entry> entityModel = assembler.toModel(repository.save(newEntry));
+    
+      return ResponseEntity //
+          .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) //
+          .body(entityModel);
     }
 
     // Single item
   
     @GetMapping("/entries/{id}")
-    Entry one(@PathVariable Long id) {
+    EntityModel<Entry> one(@PathVariable Long id) {
         
-        return repository.findById(id)
-        .orElseThrow(() -> new EntryNotFoundException(id));
+        Entry entry = repository.findById(id) //
+          .orElseThrow(() -> new EntryNotFoundException(id));
+
+        return assembler.toModel(entry);
     }
 
     @PutMapping("/entries/{id}")
-    Entry replaceEntry(@RequestBody Entry newEntry, @PathVariable Long id) {
+    ResponseEntity<?> replaceEntry(@RequestBody Entry newEntry, @PathVariable Long id) {
       
-      return repository.findById(id)
+      Entry updatedEntry = repository.findById(id) //
         .map(entry -> {
           entry.setFirst(newEntry.getFirst());
           entry.setLast(newEntry.getLast());
@@ -64,10 +85,17 @@ public class EntryController {
           newEntry.setId(id);
           return repository.save(newEntry);
         });
+
+        EntityModel<Entry> entityModel = assembler.toModel(updatedEntry);
+
+        return ResponseEntity //
+            .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) //
+            .body(entityModel);
     }
 
     @DeleteMapping("/entries/{id}")
-    void deleteEntry(@PathVariable Long id) {
+    ResponseEntity<?> deleteEntry(@PathVariable Long id) {
       repository.deleteById(id);
+      return ResponseEntity.noContent().build();
     }
 }
