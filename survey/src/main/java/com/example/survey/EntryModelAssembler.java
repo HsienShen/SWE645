@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 class EntryModelAssembler implements RepresentationModelAssembler<Entry, EntityModel<Entry>> {
 
   @Override
-  public EntityModel<Entry> toModel(Entry employee) {
+  public EntityModel<Entry> toModel(Entry entry) {
 
-    return EntityModel.of(employee, //
-        linkTo(methodOn(EntryController.class).one(employee.getId())).withSelfRel(),
+    return EntityModel.of(entry, //
+        linkTo(methodOn(EntryController.class).one(entry.getId())).withSelfRel(),
         linkTo(methodOn(EntryController.class).all()).withRel("entries"));
   }
 }
