@@ -1,47 +1,66 @@
 package com.example.survey;
 
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Size;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import java.io.Serializable;
 
 
 @Entity
-public class Entry {
+public class Entry implements Serializable{
     
     private @Id @GeneratedValue Long id; // used as primary key for db
+	
+	@NotNull
     private String first;
+
+	@NotNull
     private String last;
+
+	@NotNull
     private String street;
+
+
+	@NotNull
     private String city;
+	
+	@NotNull
     private String state;
+
+
+	@NotNull
     private String zip;
+
+	@NotNull
     private String telephone;
+
+	@NotNull
     private String email;
+
+	@NotNull
     private String date;
+
+
+
     private String [] likes;
+
+
     private String interest;
+
+
+
     private String recommend;
     
-    Entry() {}
 
-    Entry(String first, String last, String street, String city,
-            String state, String zip, String telephone, String email,
-            String date, String [] likes, String interest, String recommend) {
-        
-        this.first = first;
-        this.last = last;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.telephone = telephone;
-        this.email = email;
-        this.date = date;
-        this.likes = likes;
-        this.interest = interest;
-        this.recommend = recommend;
-
-    }
 
     public Long getId() {
 		return id;
