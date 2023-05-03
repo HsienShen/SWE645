@@ -57,10 +57,22 @@
 		</dependency>
 
 		<dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+		<dependency>
     		<groupId>com.h2database</groupId>
     		<artifactId>h2</artifactId>
     		<scope>runtime</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+        <version>5.5.7.Final</version>
+    </dependency>
 		
 		
 	</dependencies>
