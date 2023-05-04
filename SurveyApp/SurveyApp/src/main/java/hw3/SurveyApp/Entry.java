@@ -4,8 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity // This tells Hibernate to make a table out of this class
+@Table(name ="Entry")
 public class Entry {
   
   // used as primary key for db
