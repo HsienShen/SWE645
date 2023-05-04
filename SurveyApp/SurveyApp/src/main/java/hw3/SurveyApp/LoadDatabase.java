@@ -15,7 +15,7 @@ public class LoadDatabase {
     CommandLineRunner initDatabase(EntryRepository repository) {
   
       return args -> {
-        log.info("Preloading " + repository.save(new Entry("Naumi", "Varma", "Random", "Fairfax", "VA", "22030", "1234567890", "somemail@example.com", "4-27-2023", new String[] {"campus", "sports"}, "friends", "likely")));
+        log.info("Preloading " + repository.save(new Entry("Naumi", "Varma", "Random", "Fairfax", "VA", "22030", "1234567890", "somemail@example.com", "4-27-2023", "campus", "friends", "likely")));
       };
     }
 }

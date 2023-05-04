@@ -8,10 +8,6 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
-	<packaging>jar</packaging>
-
-
 	<groupId>hw3</groupId>
 	<artifactId>SurveyApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -57,7 +53,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	
 
 </project>

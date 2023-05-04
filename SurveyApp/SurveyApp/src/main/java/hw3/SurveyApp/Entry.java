@@ -4,10 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name ="Entry")
 public class Entry {
   
   // used as primary key for db
@@ -33,7 +31,7 @@ public class Entry {
 
   private String date;
 
-  private String [] likes;
+  private String likes;
 
   private String interest;
 
@@ -43,7 +41,7 @@ public class Entry {
 
   Entry(String first, String last, String street, String city,
           String state, String zip, String telephone, String email,
-          String date, String [] likes, String interest, String recommend) {
+          String date, String likes, String interest, String recommend) {
       
       this.first = first;
       this.last = last;
@@ -140,11 +138,11 @@ public class Entry {
       this.date = date;
   }
 
-  public String[] getLikes() {
+  public String getLikes() {
       return likes;
   }
 
-  public void setLikes(String [] likes) {
+  public void setLikes(String likes) {
       this.likes = likes;
   }
 
