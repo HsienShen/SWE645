@@ -1,4 +1,5 @@
 #Author: Naumi Varma & Hsien-Tien Shen
+#test Jenkins
 #This Dockerfile contains the location of war file
 FROM maven:3.8.5-openjdk-17-slim AS build
 COPY SurveyApp/SurveyApp/src /home/app/src
