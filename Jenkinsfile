@@ -12,7 +12,6 @@ pipeline {
     			script{
 		    		checkout scm
 		    		sh 'ls'
-		    		sh 'cd Assignment1/src/main/webapp && jar -cvf Assignment1.war *'
 		    		sh("sudo -S docker build --tag hshen2/studentsurvey645:${BUILD_TIMESTAMP} .")
 		    		sh("echo ${BUILD_TIMESTAMP}")
 		    		sh('sudo docker login -u hshen2 -p \"${DOCKERHUB_PASS}\"')
